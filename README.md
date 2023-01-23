@@ -8,6 +8,7 @@ A datagroup needs to be added (listed below) as a String Datagroup with the IPs 
 
 
 ## Datagroup
+''' 
 ltm data-group internal /Common/asmMethodBypass {
     records {
         10.2.10.10 { }
@@ -15,6 +16,7 @@ ltm data-group internal /Common/asmMethodBypass {
     }
     type string
 }
+'''
 
 
 ### enhancement ideas
