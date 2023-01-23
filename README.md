@@ -4,6 +4,9 @@
 
 Quick iRule and Datagroup to allow bypassing an ASM block for a particular IP address, for a particular VIOLATION type
 
+Note that for the iRule to fire, the Security Policy must have 'ASM iRules capabilities' enabled.  For more details:
+https://support.f5.com/csp/article/K15573541 
+
 A datagroup needs to be added (listed below) as a String Datagroup with the IPs listed in the "String" field for IPs where the violation needs to be skipped
 
 
