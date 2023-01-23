@@ -21,3 +21,10 @@ ltm data-group internal /Common/asmMethodBypass {
 
 ### enhancement ideas
 In the value field, add VIOLATION names for that IP that should be bypassed
+
+### Note:
+Offered as a simple example of what is capable with iRules and a Security Policy on BIG-IP Advanced WAF
+
+Care MUST be taken to ensure that any violations that are "Unblocked" are properly assessed and categorized by your Security Team.
+
+No warranty offered on how this works in a particular environment. If you have questions, please reach out to me or your F5 Reseller
