@@ -137,7 +137,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "https://{{bigip_a_mgmt}}/mgmt/tm/asm/policies/{{policy_id}}/signatures/",
+					"raw": "https://{{bigip_a_mgmt}}/mgmt/tm/asm/policies/{{policy_id}}/signatures/{{sigref_id}}",
 					"protocol": "https",
 					"host": [
 						"{{bigip_a_mgmt}}"
@@ -149,7 +149,7 @@
 						"policies",
 						"{{policy_id}}",
 						"signatures",
-						""
+						"{{sigref_id}}"
 					]
 				}
 			},
@@ -237,7 +237,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"block\": false\n}"
+					"raw": "{\n    \"enabled\": false,\n    \"block\": false,\n    \"performStaging\": false\n}"
 				},
 				"url": {
 					"raw": "https://{{bigip_a_mgmt}}/mgmt/tm/asm/policies/{{policy_id}}/signatures/{{sigref_id}}",
@@ -253,6 +253,93 @@
 						"{{policy_id}}",
 						"signatures",
 						"{{sigref_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Apply policy changes",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{user}}",
+							"type": "string"
+						},
+						{
+							"key": "saveHelperData",
+							"type": "any"
+						},
+						{
+							"key": "showPassword",
+							"value": false,
+							"type": "boolean"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"policyReference\": {\n        \"link\": \"/mgmt/tm/asm/policies/{{policy_id}}\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{bigip_a_mgmt}}/mgmt/tm/asm/tasks/apply-policy",
+					"protocol": "https",
+					"host": [
+						"{{bigip_a_mgmt}}"
+					],
+					"path": [
+						"mgmt",
+						"tm",
+						"asm",
+						"tasks",
+						"apply-policy"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Attack Simulation",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://arcadia.proteafinance.com/?q=' OR 1=1 --",
+					"protocol": "https",
+					"host": [
+						"arcadia",
+						"proteafinance",
+						"com"
+					],
+					"path": [
+						""
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "' OR 1=1 --"
+						}
 					]
 				}
 			},
